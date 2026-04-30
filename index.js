@@ -7,15 +7,13 @@ if (!fs.existsSync(process.env.DIRECTORY)) {
 	return console.error(`Directory "${process.env.DIRECTORY}" does not exist!`)
 }
 
-console.log(process.env.DIRECTORY);
-
 let directories = [process.env.DIRECTORY];
 let files = [];
 
 while (directories.length) {
 	let directory = fs.readdirSync(directories[0], { withFileTypes: true });
 
-	for (i = 0; i < directory.length; i++) {
+	for (let i = 0; i < directory.length; i++) {
 		if (directory[i].isFile()) {
 			files.push(`${directories[0]}/${directory[i].name}`);
 		} else if (directory[i].isDirectory()) {
